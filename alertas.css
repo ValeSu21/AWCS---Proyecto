@@ -1,0 +1,195 @@
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo del contenedor de la cabecera */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+}
+
+/* Estilo del logo */
+.logo img {
+    width: 200px;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #e9ecef;
+    padding: 5px 40px;
+    border-radius: 30px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: none;
+    padding: 5px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #6c757d;
+}
+
+.user-cart i {
+    font-size: 3em;
+    color: #6c757d;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* Barra de navegación */
+nav {
+    background-color: #007bff;
+    padding: 20px 0;
+}
+
+
+nav ul {
+    list-style: none;          
+    padding: 0;
+    display: flex;             
+    justify-content: center;   
+    background-color: #007bff;    
+}
+
+nav ul li {
+    margin: 0 15px;           
+}
+
+nav ul li a {
+    text-decoration: none;     
+    color: #fff;               
+    font-size: 1rem;        
+    font-weight: bold;      
+    transition: color 0.3s;  
+}
+
+nav ul li a:hover {
+    color: #f39c12;            
+}
+
+
+/* Banner de alerta */
+.news-banner {
+    background: linear-gradient(to right, #007BFF 50%, #0056b3 50%); /* Dos colores */
+    color: white; /* Texto blanco */
+    text-align: center; /* Centrar el texto */
+    padding: 20px 0; /* Espaciado interno */
+    font-size: 24px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    position: relative;
+}
+
+.news-banner h1 {
+    position: relative; /* Asegura que el texto esté sobre el fondo */
+    z-index: 1; /* Traer texto al frente */
+}
+/* Sección de noticias */
+.news {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.news-item {
+    text-align: center;
+    width: 22%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.news-item img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.news-item p {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #333;
+}
+/* Footer styles */
+.footer {
+    background-color: #000; 
+    color: #fff;           
+    text-align: center;   
+    padding: 10px 0;       
+}
+
+.footer .social-icons {
+    margin-bottom: 10px;
+}
+
+.footer .icon {
+    margin: 0 10px;       
+    color: #fff;          
+    font-size: 1.5rem;     
+    text-decoration: none; 
+}
+
+.footer .icon:hover {
+    color: #f39c12; 
+}
+
+.footer .copyright {
+    margin: 0;             
+    font-size: 0.9rem;     
+}
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaciado entre el input y el botón */
+}
+
+.search-input {
+    width: 400px; /* Ancho del buscador */
+    height: 40px; /* Altura del buscador */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño del texto */
+    border: 2px solid #ccc; /* Borde del buscador */
+    border-radius: 8px; /* Bordes redondeados */
+    outline: none; /* Quita el borde azul al hacer clic */
+    transition: border-color 0.3s ease; /* Efecto en hover/focus */
+}
+
+.search-input:focus {
+    border-color: #007BFF; /* Color de borde al estar enfocado */
+}
+
+.search-button {
+    height: 40px; /* Igual altura que el buscador */
+    width: 50px; /* Ancho del botón */
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: white; /* Color del icono */
+    border: none; /* Quitar el borde */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar a cursor de mano */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease; /* Efecto en hover */
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* Color más oscuro en hover */
+}
