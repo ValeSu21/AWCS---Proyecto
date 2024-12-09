@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>Formulario de Registro y Login</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <div class="headLogcontainer">
+    <div class="logoLogin">
+        <img src="logoPagina.png" alt="CLIMAtico logo"  >
+    </div></div>
+</head>
+
+<body>
+  <div class="containerInicial">
+    <h2 class="text-center mb-4">Sistema de Registro y Login</h2>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Registro</a>
+      </li>
+    </ul>
+    <div class="tab-content mt-4">
+
+      <!-- Sección Login -->
+      <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Correo Electrónico</label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Ingresa tu correo electrónico">
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Contraseña</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Ingresa tu contraseña">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+        </form>
+      </div>
+
+      <!-- Sección Registro -->
+      <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="fullName">Nombre Completo</label>
+            <input type="text" class="form-control" id="fullName" placeholder="Ingresa tu nombre completo">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirmar Contraseña</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirma tu contraseña">
+          </div>
+
+          <button type="submit" class="btn btn-success btn-block">Registrar</button>
+        </form>
+
+        <hr>
+        <h4 class="text-center mb-3">Usuarios Registrados</h4>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Nombre Completo</th>
+              <th>Correo Electrónico</th>
+              <th>Fecha de Registro</th>
+            </tr>
+          </thead>
+          <tbody id="dataTableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let registeredUsers = []; // Array para almacenar usuarios registrados temporalmente
+
+    // Funcionalidad de Registro
+    document.getElementById('registerForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+      if (!fullName || !email || !password || !confirmPassword) {
+        alert('Por favor completa todos los campos');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Las contraseñas no coinciden');
+        return;
+      }
+
+      const userData = {
+        fullName,
+        email,
+        password,
+        date: new Date().toLocaleString(),
+      };
+
+      registeredUsers.push(userData);
+      alert('Usuario registrado con éxito');
+      addRowToTable(userData);
+
+      document.getElementById('registerForm').reset();
+    });
+
+    // Muestra los datos ingresados en la tabla
+    function addRowToTable(data) {
+      const tableBody = document.getElementById('dataTableBody');
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td>${data.fullName}</td>
+        <td>${data.email}</td>
+        <td>${data.date}</td>
+      `;
+      tableBody.appendChild(newRow);
+    }
+
+    // Funcionalidad de Login
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      const user = registeredUsers.find(user => user.email === email && user.password === password);
+
+      if (user) {
+        alert(`¡Inicio de sesión exitoso! Bienvenido ${user.fullName}`);
+        window.location.href = "index.html";
+      } else {
+        alert('Correo electrónico o contraseña incorrectos');
+      }
+
+      document.getElementById('loginForm').reset();
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body><br><br><br>
+<footer class="footer">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#" class="icon" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="icon" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="icon" aria-label="TikTok">
+                <i class="bi bi-tiktok"></i>
+            </a>
+        </div>
+        <p class="copyright">Copyright © 2024 CLIMATico. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</html>

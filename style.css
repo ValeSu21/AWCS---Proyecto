@@ -222,3 +222,17 @@ nav ul li a:hover {
     color: #555;
     text-align: center;
 }
+/*-----------*/
+.headLogcontainer {
+    display: flex; /* Activa Flexbox */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Opcional, centra verticalmente si necesitas */
+  }
+  
+  .logoLogin img {
+    max-width: 100%;
+    height: auto;
+
+  }
+ 
+  
