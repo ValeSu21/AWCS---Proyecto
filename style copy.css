@@ -1,4 +1,4 @@
-/* Reset de márgenes y padding */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Estilo del contenedor de la cabecera */
+
 .header-container {
     display: flex;
     align-items: center;
@@ -15,7 +15,6 @@
     background-color: #f8f9fa;
 }
 
-/* Estilo del logo */
 .logo img {
     width: 200px;
 }
@@ -84,21 +83,22 @@ nav ul li a:hover {
 
 
 /* Banner de alerta */
-.news-banner {
-    background: linear-gradient(to right, #007BFF 50%, #0056b3 50%); /* Dos colores */
-    color: white; /* Texto blanco */
-    text-align: center; /* Centrar el texto */
-    padding: 20px 0; /* Espaciado interno */
-    font-size: 24px; /* Tamaño del texto */
-    font-weight: bold; /* Texto en negrita */
-    text-transform: uppercase; /* Convertir a mayúsculas */
-    position: relative;
+.alert-banner {
+    background-color: #fd7e14;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
-.news-banner h1 {
-    position: relative; /* Asegura que el texto esté sobre el fondo */
-    z-index: 1; /* Traer texto al frente */
+.alert-banner i {
+    font-size: 2em;
+    margin-right: 10px;
 }
+
 /* Sección de noticias */
 .news {
     display: flex;
@@ -154,42 +154,78 @@ nav ul li a:hover {
     font-size: 0.9rem;     
 }
 
-
-.search-bar {
+.community {
     display: flex;
+    flex-direction: column; 
     align-items: center;
-    gap: 8px; /* Espaciado entre el input y el botón */
+    padding: 20px;
+    background-color: #f4f4f4;
+    gap: 20px; 
+    
 }
 
-.search-input {
-    width: 400px; /* Ancho del buscador */
-    height: 40px; /* Altura del buscador */
-    padding: 10px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño del texto */
-    border: 2px solid #ccc; /* Borde del buscador */
-    border-radius: 8px; /* Bordes redondeados */
-    outline: none; /* Quita el borde azul al hacer clic */
-    transition: border-color 0.3s ease; /* Efecto en hover/focus */
+.card-comunidad {
+    display: flex; 
+    flex-direction: row;
+    align-items: center; 
+    width: 100%; 
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px 0; 
 }
 
-.search-input:focus {
-    border-color: #007BFF; /* Color de borde al estar enfocado */
+.header-comunidad {
+    width: 100%; 
+    background-color: #3396d0;
+    color: white;
+    padding: 15px;
+    font-size: 1.8rem; 
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.search-button {
-    height: 40px; /* Igual altura que el buscador */
-    width: 50px; /* Ancho del botón */
-    background-color: #007BFF; /* Color de fondo del botón */
-    color: white; /* Color del icono */
-    border: none; /* Quitar el borde */
-    border-radius: 8px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar a cursor de mano */
+.content-comunidad {
     display: flex;
+    flex-direction: column; 
     align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .content-comunidad {
+        flex-direction: row; 
+    }
+}
+
+.image-comunidad {
+    flex-shrink: 0; 
+    width: 40%; 
+    max-width: 500px; 
+    height: auto;
+    object-fit: cover;
+}
+
+.text-comunidad {
+    flex: 1; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    transition: background-color 0.3s ease; /* Efecto en hover */
 }
 
-.search-button:hover {
-    background-color: #0056b3; /* Color más oscuro en hover */
+.text-comunidad h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.text-comunidad p.date {
+    font-size: 0.9rem;
+    color: #555;
 }

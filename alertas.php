@@ -1,3 +1,12 @@
+<?php
+// Incluye la conexión a la base de datos
+include 'conexion.php'; // Asegúrate de tener un archivo conexion.php que conecte a la base de datos
+
+// Consulta las alertas desde la base de datos
+$sql = "SELECT titulo, mensaje, imagen FROM alerts";
+$resultado = $conexion->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +27,7 @@
                 <button class="search-button"><i class="bi bi-search"></i></button>
             </div>            
             <div class="user-cart">
-                <i class="bi bi-person-circle"></i>
-                <i class="bi bi-cart"></i> <!-- Ícono del carrito -->
+            <a href="registro.html"><i class="bi bi-person-circle"></i></a>
             </div>
         </div>
     </header>
@@ -27,11 +35,10 @@
     <nav>
         <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="noticia.html">Noticias</a></li>
-            <li><a href="recomendaciones.html">Recomendaciones</a></li>
-            <li><a href="alertas.html">Alertas</a></li>
-            <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="productos.html">Productos</a></li>
+            <li><a href="noticias.php">Noticias</a></li>
+            <li><a href="recomendaciones.php">Recomendaciones</a></li>
+            <li><a href="alertas.php">Alertas</a></li>
+            <li><a href="publicaciones.php">Comunidad</a></li>
         </ul>
     </nav>
     <p>&nbsp;&nbsp;&nbsp;</p>
@@ -41,30 +48,19 @@
     </section>
 
     <section class="news">
-        <div class="news-item">
-            <a href="https://www.imn.ac.cr/es/web/imn/avisos-meteorologicos" target="_blank">
-                <img src="Noticias/Inundaciones.jpg" alt="Inundaciones en Costa Rica">
-            </a>
-            <p>Ya son 114 los centros educativos afectados por fuertes lluvias en el Caribe.</p>
-        </div>
-        <div class="news-item">
-            <a href="https://www.imn.ac.cr/es/web/imn/avisos-meteorologicos" target="_blank">
-                <img src="Noticias/Fenomeno climatico.jpg" alt="Fenómeno climático">
-            </a>
-            <p>Costa Rica se encuentra en alerta amarilla debido a las lluvias.</p>
-        </div>
-        <div class="news-item">
-            <a href="https://www.imn.ac.cr/es/web/imn/avisos-meteorologicos" target="_blank">
-                <img src="Noticias/Tormenta tropical.jpg" alt="Tormenta tropical">
-            </a>
-            <p>El gobierno decreta emergencia nacional.</p>
-        </div>
-        <div class="news-item">
-            <a href="https://www.imn.ac.cr/es/web/imn/avisos-meteorologicos" target="_blank">
-                <img src="Noticias/Cambio climatico.jpeg" alt="Cambio climático">
-            </a>
-            <p>Costa Rica eleva las alertas por las lluvias</p>
-        </div>
+        <?php
+        // Mostrar las alertas dinámicamente
+        if ($resultado->num_rows > 0) {
+            while ($fila = $resultado->fetch_assoc()) {
+                echo '<div class="news-item">';
+                echo '<img src="' . htmlspecialchars($fila['imagen']) . '" alt="Alerta">';
+                echo '<p>' . htmlspecialchars($fila['mensaje']) . '</p>';
+                echo '</div>';
+            }
+        } else {
+            echo '<p>No hay alertas disponibles.</p>';
+        }
+        ?>
     </section>
 
     <footer class="footer">

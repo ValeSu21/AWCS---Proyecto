@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,62 +18,193 @@
                 <button><i class="bi bi-search"></i></button>
             </div>
             <div class="user-cart">
-                <i class="bi bi-person-circle"></i>
+                <a href="registro.html"><i class="bi bi-person-circle"></i></a>
             </div>
         </div>
     </header>
 
     <nav>
         <ul>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="noticia.html">Noticias</a></li>
-                    <li><a href="recomendaciones.html">Recomendaciones</a></li>
-                    <li><a href="alertas.html">Alertas</a></li>
-                    <li><a href="comunidad.html">Comunidad</a></li>
-                </ul>
-            </nav>
-            
-
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="noticias.php">Noticias</a></li>
+            <li><a href="recomendaciones.php">Recomendaciones</a></li>
+            <li><a href="alertas.php">Alertas</a></li>
+            <li><a href="publicaciones.php">Comunidad</a></li>
         </ul>
     </nav>
 
     <section class="alert-banner">
-        <i class="bi bi-exclamation-circle-fill"></i>
-        <h1>Alerta Naranja</h1>
+        <i class="bi bi-cloud-sun"></i>
+        <h1>Bienvenido a ClimaTico</h1>
     </section>
 
-    <section class="news">
-        <div class="news-item">
-            <img src="flood.jpg" alt="Flood Image">
-            <p>Ya son 114 los centros educativos afectados por fuertes lluvias</p>
+    <main id="temperaturas">
+        <!-- Provincias -->
+        <div class="provincia" id="san-jose">
+            <h3>San José</h3>
+            <i class="bi bi-cloud-sun" id="icon-san-jose"></i>
+            <p>Temperatura: <span class="temp" id="temp-san-jose">Cargando...</span></p>
         </div>
-        <div class="news-item">
-            <img src="flood.jpg" alt="Flood Image">
-            <p>Ya son 114 los centros edu
-</p> 
+        <div class="provincia" id="alajuela">
+            <h3>Alajuela</h3>
+            <i class="bi bi-cloud-sun" id="icon-alajuela"></i>
+            <p>Temperatura: <span class="temp" id="temp-alajuela">Cargando...</span></p>
         </div>
-        <div class="news-item">
-            <img src="flood.jpg" alt="Flood Image">
-            <p>Ya son 114 los centros edu
-</p> 
+        <div class="provincia" id="cartago">
+            <h3>Cartago</h3>
+            <i class="bi bi-cloud-sun" id="icon-cartago"></i>
+            <p>Temperatura: <span class="temp" id="temp-cartago">Cargando...</span></p>
         </div>
-    </section>
-</body>
-        <footer class="footer">
-            <div class="container">
-                <div class="social-icons">
-                    <a href="#" class="icon" aria-label="Facebook">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="#" class="icon" aria-label="Instagram">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                    <a href="#" class="icon" aria-label="TikTok">
-                        <i class="bi bi-tiktok"></i>
-                    </a>
-                </div>
-                <p class="copyright">Copyright © 2024 CLIMATico. Todos los derechos reservados.</p>
+        <div class="provincia" id="heredia">
+            <h3>Heredia</h3>
+            <i class="bi bi-cloud-sun" id="icon-heredia"></i>
+            <p>Temperatura: <span class="temp" id="temp-heredia">Cargando...</span></p>
+        </div>
+        <div class="provincia" id="puntarenas">
+            <h3>Puntarenas</h3>
+            <i class="bi bi-cloud-sun" id="icon-puntarenas"></i>
+            <p>Temperatura: <span class="temp" id="temp-puntarenas">Cargando...</span></p>
+        </div>
+        <div class="provincia" id="guanacaste">
+            <h3>Guanacaste</h3>
+            <i class="bi bi-cloud-sun" id="icon-guanacaste"></i>
+            <p>Temperatura: <span class="temp" id="temp-guanacaste">Cargando...</span></p>
+        </div>
+
+        <div class="provincia" id="limon">
+            <h3>Limon</h3>
+            <i class="bi bi-cloud-sun" id="icon-limon"></i>
+            <p>Temperatura: <span class="temp" id="temp-limon">Cargando...</span></p>
+        </div>
+    </main>
+
+    
+    <style>
+        /* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal para temperaturas */
+#temperaturas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    max-width: 1200px; /* Ajuste del ancho máximo */
+}
+
+/* Tarjeta individual (Card) */
+.provincia {
+    background: linear-gradient(135deg, #3498db, #6dd5ed);
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    padding: 25px 20px;
+    border: 2px solid #fff; /* Borde sutil blanco */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover */
+.provincia:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Título de la provincia */
+.provincia h3 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Temperatura */
+.provincia p {
+    font-size: 1.4rem;
+    margin: 5px 0;
+    font-weight: 400;
+    color: #ecf0f1;
+}
+
+/* Valor de la temperatura */
+.provincia .temp {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffcc29; /* Amarillo cálido */
+    margin-top: 10px;
+}
+
+/* Diseño adaptable */
+@media (max-width: 768px) {
+    #temperaturas {
+        grid-template-columns: 1fr; /* Una sola columna */
+        margin: 10px;
+    }
+
+    .provincia {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    .provincia h3 {
+        font-size: 1.5rem;
+    }
+
+    .provincia p,
+    .provincia .temp {
+        font-size: 1.4rem;
+    }
+}
+
+    </style>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#" class="icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="icon" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
             </div>
-        </footer>
+            <p class="copyright">Copyright © 2024 CLIMAtico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script para consumir la API y mostrar las temperaturas -->
+    <script>
+        const apiKey = 'f5d963db5eeb931f076441a8b3c2436c';
+        const provincias = [
+            { id: 'temp-san-jose', lat: 9.9281, lon: -84.0907 },
+            { id: 'temp-alajuela', lat: 10.0153, lon: -84.2144 },
+            { id: 'temp-cartago', lat: 9.8644, lon: -83.9194 },
+            { id: 'temp-heredia', lat: 10.0024, lon: -84.1165 },
+            { id: 'temp-puntarenas', lat: 9.9771, lon: -84.8332 },
+            { id: 'temp-guanacaste', lat: 10.635, lon: -85.4377 },
+            { id: 'temp-limon', lat: 10.0024, lon: -83.0841 }
+        ];
+
+        async function obtenerTemperaturas() {
+            for (const provincia of provincias) {
+                try {
+                    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${provincia.lat}&lon=${provincia.lon}&appid=${apiKey}&units=metric&lang=es`);
+                    const data = await response.json();
+                    const temperatura = data.main.temp.toFixed(1);
+                    document.getElementById(provincia.id).innerText = `${temperatura}°C`;
+                } catch (error) {
+                    console.error('Error al obtener los datos del clima:', error);
+                    document.getElementById(provincia.id).innerText = "N/A";
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', obtenerTemperaturas);
+    </script>
+</body>
+</html>

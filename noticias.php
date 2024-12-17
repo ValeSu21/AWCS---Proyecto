@@ -1,3 +1,17 @@
+<?php
+// Configuración de la conexión a la base de datos
+$conexion = new mysqli("localhost", "valeria", "123456", "proyecto");
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+
+// Consulta SQL para obtener todas las noticias sin la descripción ni el nombre
+$sql = "SELECT id, Titulo, Imagen, Fecha FROM noticias";
+$resultado = $conexion->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +33,6 @@
             </div>            
             <div class="user-cart">
                 <i class="bi bi-person-circle"></i>
-                <i class="bi bi-cart"></i> <!-- Ícono del carrito -->
             </div>
         </div>
     </header>
@@ -27,11 +40,10 @@
     <nav>
         <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="noticia.html">Noticias</a></li>
-            <li><a href="recomendaciones.html">Recomendaciones</a></li>
-            <li><a href="alertas.html">Alertas</a></li>
-            <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="productos.html">Productos</a></li>
+            <li><a href="noticias.php">Noticias</a></li>
+            <li><a href="recomendaciones.php">Recomendaciones</a></li>
+            <li><a href="alertas.php">Alertas</a></li>
+            <li><a href="publicaciones.php">Comunidad</a></li>
         </ul>
     </nav>
     <p>&nbsp;&nbsp;&nbsp;</p>
@@ -39,33 +51,26 @@
     <section class="news-banner">
         <h1>Noticias</h1>
     </section>
-    
 
     <section class="news">
-        <div class="news-item">
-            <img src="Noticias/Inundaciones.jpg" alt="Inundaciones en Costa Rica">
-            <p>Ya son 114 los centros educativos afectados por fuertes lluvias en el Caribe.</p>
-        </div>
-        <div class="news-item">
-            <img src="Noticias/Fenomeno climatico.jpg" alt="Fenómeno climático">
-            <p>Fenómeno de El Niño aumenta riesgos de sequías en Guanacaste.</p>
-        </div>
-        <div class="news-item">
-            <img src="Noticias/Tormenta tropical.jpg" alt="Tormenta tropical">
-            <p>Tormenta tropical deja comunidades incomunicadas en el Pacífico Sur.</p>
-        </div>
-        <div class="news-item">
-            <img src="Noticias/Cambio climatico.jpeg" alt="Cambio climático">
-            <p>Estudio alerta sobre el impacto del cambio climático en el Valle Central.</p>
-        </div>
-        <div class="news-item">
-            <img src="Noticias/Emergencias Medicas.jpg" alt="Emergencia climática">
-            <p>Emergencia climática: Más de 300 familias afectadas por deslizamientos.</p>
-        </div>
-        <div class="news-item">
-            <img src="Noticias/Preparacion para lluvias.jpg" alt="Preparativos ante lluvias">
-            <p>Autoridades intensifican preparativos ante lluvias en la Zona Norte.</p>
-        </div>
+        <?php
+        if ($resultado->num_rows > 0) {
+            // Iterar sobre los resultados de la base de datos
+            while ($fila = $resultado->fetch_assoc()) {
+                echo '<div class="news-item">';
+                echo '<img src="' . htmlspecialchars($fila['Imagen']) . '" alt="' . htmlspecialchars($fila['Titulo']) . '">';
+                echo '<p>';
+                echo '<a href="detalle_noticia.php?id=' . intval($fila['id']) . '" class="news-title">';
+                echo '<strong>' . htmlspecialchars($fila['Titulo']) . '</strong>';
+                echo '</a>';
+                echo '</p>';
+                echo '<p><small>Fecha: ' . htmlspecialchars($fila['Fecha']) . '</small></p>';
+                echo '</div>';
+            }
+        } else {
+            echo "<p>No hay noticias disponibles en este momento.</p>";
+        }
+        ?>
     </section>
 
     <footer class="footer">
@@ -86,3 +91,8 @@
     </footer>
 </body>
 </html>
+
+<?php
+// Cerrar la conexión a la base de datos
+$conexion->close();
+?>
